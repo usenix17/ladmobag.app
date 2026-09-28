@@ -1,0 +1,239 @@
+<title>Ladmo Bag</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Karla:wght@400;600;700&family=Courier+Prime:wght@400;700&display=swap">
+<style>
+/* Layout: a 1970s studio set. Mustard set wall with the bag on a pedestal, walnut console band below for the story, then the recipe card. Single committed look. */
+:root{
+  --wall:#E6B437; --wall-deep:#D29E22; --ink:#17130F; --paper:#FCFBF7;
+  --crease:#E4DFD3; --kraft:#B7865A; --kraft-crease:#9C6F48; --red:#C0341F; --walnut:#3A281B; --walnut-hi:#F3E6CF;
+  --muted:#5A4A2E;
+  --display:"Bowlby One","Arial Black",Impact,sans-serif;
+  --body:"Karla","Helvetica Neue",Arial,sans-serif;
+  --mono:"Courier Prime","Courier New",monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--wall);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+
+/* Set wall */
+.set{background:
+  repeating-linear-gradient(90deg,transparent 0 118px,rgba(0,0,0,.05) 118px 120px),
+  radial-gradient(ellipse at 30% 40%,rgba(255,255,255,.28),transparent 60%),var(--wall);
+  padding-block:clamp(28px,6vw,64px) 0;border-bottom:10px solid var(--ink)}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:clamp(20px,4vw,40px)}
+.bug{font-family:var(--mono);font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.bug .ch{display:inline-grid;place-items:center;width:2.2em;height:2.2em;border-radius:50%;background:var(--ink);color:var(--wall);font-size:.95rem;letter-spacing:0}
+.domain{font-family:var(--mono);font-size:.85rem}
+.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(24px,5vw,64px);align-items:end}
+.stage{display:flex;flex-direction:column;align-items:center}
+.bag{position:relative;width:min(300px,78vw);aspect-ratio:1/1.72;max-width:100%;transform:rotate(-3deg);transform-origin:50% 100%;transition:transform .5s cubic-bezier(.3,1.6,.5,1)}
+.stage:hover .bag{transform:rotate(1.5deg) translateY(-6px)}
+.bag .sack{position:absolute;inset:0;background:
+   linear-gradient(90deg,rgba(0,0,0,.07),transparent 9%,transparent 91%,rgba(0,0,0,.07)),
+   linear-gradient(180deg,transparent 0 76%,var(--kraft-crease) 76% 76.6%,transparent 76.6%),
+   repeating-linear-gradient(8deg,rgba(255,255,255,.035) 0 2px,transparent 2px 5px),
+   var(--kraft);
+  clip-path:polygon(0 3%,4% 0,8% 3%,12% 0,16% 3%,20% 0,24% 3%,28% 0,32% 3%,36% 0,40% 3%,44% 0,48% 3%,52% 0,56% 3%,60% 0,64% 3%,68% 0,72% 3%,76% 0,80% 3%,84% 0,88% 3%,92% 0,96% 3%,100% 0,100% 100%,0 100%);
+  filter:drop-shadow(0 18px 18px rgba(40,25,0,.35))}
+.bag .fold{position:absolute;left:0;right:0;top:9%;height:2px;background:var(--kraft-crease)}
+.bag .print{position:absolute;left:8%;width:84%;top:30%;height:auto}
+.pedestal{width:min(340px,86vw);height:22px;background:var(--ink);border-radius:50%/100% 100% 0 0;margin-top:-4px}
+.pitch{padding-bottom:clamp(28px,5vw,56px)}
+.kicker{font-family:var(--mono);font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;color:var(--muted);margin:0 0 .6rem}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,7.5vw,5.2rem);line-height:.92;margin:0 0 1rem;text-wrap:balance;letter-spacing:-.01em}
+h1 .red{color:var(--red)}
+.lede{font-size:1.2rem;max-width:34ch;margin:0 0 1.6rem}
+.dl{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:.6em;text-decoration:none;font-weight:700;padding:.85em 1.25em;border:3px solid var(--ink);border-radius:6px;background:var(--paper);box-shadow:4px 4px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.btn.primary{background:var(--red);color:var(--paper)}
+.btn small{font-family:var(--mono);font-weight:400;font-size:.78rem;opacity:.85}
+.fine{font-family:var(--mono);font-size:.82rem;color:var(--muted);margin:1rem 0 0;max-width:52ch}
+
+/* Console band */
+.console{background:var(--walnut);color:var(--walnut-hi);padding-block:clamp(40px,7vw,80px)}
+.console .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px)}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,3.8vw,2.4rem);line-height:1.05;margin:0 0 1rem;text-wrap:balance}
+.console h2{color:var(--wall)}
+.console p{margin:0 0 1rem;max-width:62ch}
+.cast{list-style:none;padding:0;margin:1.2rem 0 0;display:grid;gap:10px}
+.cast li{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:12px;border-top:1px solid rgba(243,230,207,.2);padding-top:10px}
+.cast b{font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;font-size:.8rem;color:var(--wall)}
+.safe{border:2px dashed rgba(243,230,207,.35);border-radius:8px;padding:1.25rem 1.4rem;align-self:start}
+.safe .kicker{color:var(--wall)}
+
+/* Recipe card */
+.how{padding-block:clamp(40px,7vw,80px)}
+.card{background:var(--paper);border:3px solid var(--ink);border-radius:8px;box-shadow:8px 8px 0 var(--ink);padding:clamp(20px,4vw,40px)}
+.card-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px 20px;border-bottom:3px solid var(--ink);padding-bottom:.8rem;margin-bottom:1.4rem}
+.card-head h2{margin:0}
+.spec{font-family:var(--mono);font-size:.9rem;font-variant-numeric:tabular-nums}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+ol.steps li{counter-increment:s}
+ol.steps li::before{content:counter(s);font-family:var(--display);font-size:2rem;color:var(--red);display:block;line-height:1;margin-bottom:.4rem}
+ol.steps b{display:block;margin-bottom:.2rem}
+ol.steps p{margin:0;font-size:.98rem}
+.files{margin-top:1.8rem;overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.95rem;min-width:520px}
+th,td{text-align:left;padding:.55rem .6rem;border-bottom:1px solid var(--crease)}
+th{font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;font-size:.75rem;color:var(--muted)}
+td a{font-weight:700}
+td code{font-family:var(--mono);font-size:.88rem}
+
+footer{background:var(--ink);color:var(--walnut-hi);padding-block:28px;font-family:var(--mono);font-size:.82rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 24px}
+
+@media (max-width:760px){
+  .hero,.console .grid{grid-template-columns:minmax(0,1fr)}
+  .stage{order:2}
+  ol.steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:420px){ ol.steps{grid-template-columns:minmax(0,1fr)} .cast li{grid-template-columns:minmax(0,1fr);gap:2px} }
+@media (prefers-reduced-motion:reduce){ .bag,.btn{transition:none} .stage:hover .bag{transform:rotate(-3deg)} }
+</style>
+
+<header class="set">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="bug"><span class="ch">5</span> Phoenix &middot; 1954&ndash;1989</div>
+      <div class="domain">ladmobag.app</div>
+    </div>
+    <div class="hero">
+      <div class="stage" aria-hidden="false">
+        <div class="bag">
+          <div class="sack"></div>
+          <div class="fold"></div>
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="4 232 352 246" role="img" aria-label="LADMO BAG lettering" class="print">
+<defs>
+<g>
+<g id="glyph-0-0">
+<path d="M 28.8125 -17.296875 L 28.8125 -71.65625 L 6.546875 -71.65625 L 6.546875 0 L 62.1875 0 L 62.1875 -17.296875 Z M 28.8125 -17.296875 "/>
+</g>
+<g id="glyph-0-1">
+<path d="M 47.03125 -15.046875 L 39.5 -1.328125 L 31.859375 -15.046875 Z M 39.5 -31.625 L 53.578125 0 L 79.21875 0 L 39.71875 -73.390625 L 0.21875 0 L 25.3125 0 Z M 39.5 -31.625 "/>
+</g>
+<g id="glyph-0-2">
+<path d="M 42 -72.78125 C 20.296875 -72.78125 2.734375 -56.296875 2.734375 -35.921875 C 2.734375 -15.65625 20.296875 0.921875 42 0.921875 C 63.71875 0.921875 81.28125 -15.65625 81.28125 -35.921875 C 81.28125 -56.296875 63.71875 -72.78125 42 -72.78125 Z M 42 -19.140625 C 33.0625 -19.140625 25.09375 -25.890625 25.09375 -35.921875 C 25.09375 -45.453125 33.0625 -52.8125 42 -52.8125 C 50.953125 -52.8125 58.921875 -45.453125 58.921875 -35.921875 C 58.921875 -25.890625 50.953125 -19.140625 42 -19.140625 Z M 42 -19.140625 "/>
+</g>
+<g id="glyph-1-0">
+<path d="M 54.90625 -68.78125 L 41.34375 -69.5625 L 41.21875 -69.5625 L 14.359375 -71.109375 L 7.6875 0.4375 L 34.546875 1.984375 L 34.671875 1.984375 L 47.59375 2.71875 C 47.59375 2.71875 80.96875 4.625 84.296875 -31.109375 C 87.640625 -66.921875 54.90625 -68.78125 54.90625 -68.78125 Z M 44.75 -14.78125 L 36.15625 -15.265625 L 39.609375 -52.21875 L 48.203125 -51.734375 C 48.203125 -51.734375 59.28125 -50.890625 57.5625 -32.625 C 55.875 -14.453125 44.75 -14.78125 44.75 -14.78125 Z M 44.75 -14.78125 "/>
+</g>
+<g id="glyph-2-0">
+<path d="M 27.5 0 L 27.390625 -27.078125 L 45.9375 -7.359375 L 64.375 -27.078125 L 64.375 0 L 85.328125 0 L 85.328125 -83.109375 L 45.9375 -33.96875 L 6.546875 -83.109375 L 6.546875 0 Z M 27.5 0 "/>
+</g>
+<g id="glyph-3-0">
+<path d="M 38.3125 -39.015625 L 35.921875 -38.875 C 35.921875 -38.875 57.375 -40.09375 56.171875 -57.859375 C 55 -74.828125 33.328125 -73.59375 33.328125 -73.59375 L 1.53125 -71.78125 L 6.421875 -0.359375 L 40.625 -2.3125 C 40.625 -2.3125 63.359375 -3.609375 62.078125 -22.40625 C 60.84375 -40.296875 38.3125 -39.015625 38.3125 -39.015625 Z M 22.40625 -59.03125 L 32.640625 -59.609375 C 32.640625 -59.609375 37.65625 -59.984375 37.984375 -55.171875 C 38.34375 -49.875 33.3125 -49.890625 33.3125 -49.890625 L 23.078125 -49.3125 Z M 36.78125 -16.875 L 25.34375 -16.21875 L 24.640625 -26.421875 L 36.078125 -27.078125 C 36.078125 -27.078125 41.40625 -27.484375 41.765625 -22.265625 C 42.125 -16.96875 36.78125 -16.875 36.78125 -16.875 Z M 36.78125 -16.875 "/>
+</g>
+<g id="glyph-4-0">
+<path d="M 70.796875 -44.40625 L 69.03125 -44.359375 L 37.671875 -43.4375 L 38.390625 -26.171875 L 49.203125 -26.5 C 46.515625 -22.625 41.6875 -20.34375 37.0625 -20.203125 C 29 -19.96875 22.125 -26.421875 21.703125 -36.53125 C 21.3125 -45.9375 28.171875 -53.5 36.25 -53.734375 C 39.59375 -53.828125 42.78125 -52.703125 45.4375 -50.71875 L 58.78125 -65.640625 C 52.453125 -70.875 44.25 -74.015625 35.40625 -73.765625 C 15.828125 -73.1875 0.6875 -56.28125 1.546875 -35.953125 C 2.390625 -15.625 18.328125 0.484375 37.90625 -0.078125 C 57.46875 -0.65625 72.015625 -17.640625 71.171875 -37.96875 C 71.140625 -38.578125 70.9375 -43.390625 70.796875 -44.40625 Z M 70.796875 -44.40625 "/>
+</g>
+</g>
+</defs>
+<g fill="#141210" fill-opacity="1">
+<use xlink:href="#glyph-0-0" x="14.43889" y="348.913121"/>
+</g>
+<g fill="#141210" fill-opacity="1">
+<use xlink:href="#glyph-0-1" x="35.624793" y="320.641365"/>
+</g>
+<g fill="#141210" fill-opacity="1">
+<use xlink:href="#glyph-1-0" x="101.848583" y="355.011448"/>
+</g>
+<g fill="#141210" fill-opacity="1">
+<use xlink:href="#glyph-2-0" x="178.331938" y="349.537513"/>
+</g>
+<g fill="#141210" fill-opacity="1">
+<use xlink:href="#glyph-0-2" x="259.937434" y="357.862321"/>
+</g>
+<g fill="#141210" fill-opacity="1">
+<use xlink:href="#glyph-3-0" x="85.45981" y="456.947531"/>
+</g>
+<g fill="#141210" fill-opacity="1">
+<use xlink:href="#glyph-0-1" x="136.582106" y="457.450623"/>
+</g>
+<g fill="#141210" fill-opacity="1">
+<use xlink:href="#glyph-4-0" x="197.426431" y="458.193909"/>
+</g>
+</svg>
+
+        </div>
+        <div class="pedestal"></div>
+      </div>
+      <div class="pitch">
+        <p class="kicker">Free printable replica</p>
+        <h1>You won a <span class="red">Ladmo&nbsp;Bag!</span></h1>
+        <p class="lede">Well, almost. Print the lettering from a real Ladmo Bag, put it on a brown lunch sack, and fill it with whatever junk food and dime-store toys you like.</p>
+        <div class="dl">
+          <a class="btn primary" href="bag.pdf" target="_blank" rel="noopener">Download PDF <small>5&times;10 in</small></a>
+          <a class="btn" href="bag.png" target="_blank" rel="noopener">Download PNG <small>300 dpi</small></a>
+          <a class="btn" href="bag.svg" target="_blank" rel="noopener">Download SVG <small>editable</small></a>
+        </div>
+        <p class="fine">Free for personal use. No mailing in postcards, no waiting for your name to be drawn.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="console">
+    <div class="wrap grid">
+      <div>
+        <h2>The most coveted prize in Arizona</h2>
+        <p>For 35 years, <em>The Wallace and Ladmo Show</em> ran on KPHO Channel 5 in Phoenix, and kids across the Valley watched it before and after school. It was one of the longest-running children&rsquo;s shows in American television.</p>
+        <p>Ladmo handed out a plain brown paper sack stuffed with candy, toys, and treats. Kids in the studio audience won them, and kids at home hoped to hear their names called. Getting a Ladmo Bag was a big deal. Plenty of grown Arizonans still remember the day they got theirs.</p>
+        <ul class="cast">
+          <li><b>Wallace</b><span>Bill Thompson, the show&rsquo;s creator and host</span></li>
+          <li><b>Ladmo</b><span>Ladmo Kwiatkowski, keeper of the bags</span></li>
+          <li><b>Gerald</b><span>Pat McMahon, as the spoiled rich kid and a crowd of other characters</span></li>
+        </ul>
+      </div>
+      <aside class="safe">
+        <p class="kicker">About this replica</p>
+        <p>I won a real Ladmo Bag, and it lives in my safe. It isn&rsquo;t going anywhere, so I recreated the lettering instead. Now anyone can make one.</p>
+        <p>Make one for a birthday, a Phoenix-themed party, or a friend who grew up watching the show and still talks about it.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="wrap">
+      <div class="card">
+        <div class="card-head">
+          <h2>Make your own</h2>
+          <span class="spec">Artwork: 5.00 &times; 10.00 in &middot; 360 &times; 720 pt</span>
+        </div>
+        <ol class="steps">
+          <li><b>Download the PDF</b><p>The lettering is already outlined, so it prints the same on any computer.</p></li>
+          <li><b>Print at 100%</b><p>Turn off &ldquo;fit to page.&rdquo; The artwork fits on letter or A4 paper.</p></li>
+          <li><b>Put it on a sack</b><p>Use a brown paper lunch sack. If your printer has a straight manual feed, print right on the flattened sack. Otherwise print on paper, trim, and glue it on.</p></li>
+          <li><b>Fill it</b><p>Candy, a whistle, a yo-yo, a coupon for a burger. Fold the top over and hand it out.</p></li>
+        </ol>
+        <div class="files">
+          <table>
+            <thead><tr><th>File</th><th>Version</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td><a href="bag.pdf" target="_blank" rel="noopener">bag.pdf</a></td><td>Plain</td><td>Best for printing</td></tr>
+              <tr><td><a href="bag2.pdf" target="_blank" rel="noopener">bag2.pdf</a></td><td>Classic, with 7-Eleven mark</td><td>Matches the original bag</td></tr>
+              <tr><td><a href="bag.png" target="_blank" rel="noopener">bag.png</a></td><td>Plain</td><td>1500 &times; 3000 px at 300 dpi, transparent background</td></tr>
+              <tr><td><a href="bag2.png" target="_blank" rel="noopener">bag2.png</a></td><td>Classic, with 7-Eleven mark</td><td>Same size, transparent background</td></tr>
+              <tr><td><a href="bag.svg" target="_blank" rel="noopener">bag.svg</a></td><td>Plain</td><td>Live text in <code>RAINFALL Heavy</code>. Install <a href="RAINFALL.otf">the font</a> before editing.</td></tr>
+              <tr><td><a href="bag2.svg" target="_blank" rel="noopener">bag2.svg</a></td><td>Classic, with 7-Eleven mark</td><td>Same font requirement</td></tr>
+              <tr><td><a href="RAINFALL.otf" target="_blank" rel="noopener">RAINFALL.otf</a></td><td>Typeface</td><td>The lettering font. Install it so the SVGs display and edit correctly.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>A fan tribute. Not affiliated with KPHO or 7-Eleven.</span>
+    <span>ladmobag.app</span>
+  </div>
+</footer>
